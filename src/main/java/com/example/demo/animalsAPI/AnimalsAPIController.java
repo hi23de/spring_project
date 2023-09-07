@@ -9,21 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.animalsAPI.AnimalsAPIData.Animals;
-
 @Controller
 public class AnimalsAPIController {
-
+	
 	private final AnimalsAPIService animalsAPIService;
 
 	public AnimalsAPIController(AnimalsAPIService animalsAPIService) {
 		this.animalsAPIService = animalsAPIService;
 	}
 
-	@GetMapping("/animals")
+	@GetMapping("/animalsAPI")
 	public String animalsAPI(Model model) throws IOException {
 
-		List<Animals> animalsList = animalsAPIService.getAnimals();
+		List<AnimalsAPIData> animalsList = animalsAPIService.getAnimals();
 
 		model.addAttribute("animalsList", animalsList);
 
@@ -31,10 +29,10 @@ public class AnimalsAPIController {
 
 	}
 
-	@PostMapping("/animals")
-	public String picPets(@RequestParam("/animals") String pic, Model model) throws IOException {
+	@PostMapping("/animalsSearch")
+	public String picPets(@RequestParam("pic") String pic, Model model) throws IOException {
 
-		List<Animals> picList = animalsAPIService.picAnimals(pic);
+		List<AnimalsAPIData> picList = animalsAPIService.picAnimals(pic);
 
 		model.addAttribute("picList", picList);
 

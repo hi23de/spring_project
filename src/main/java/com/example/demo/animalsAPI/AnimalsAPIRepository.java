@@ -6,13 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.animalsAPI.AnimalsAPIData.Animals;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class AnimalsAPIRepository {
 
-	public Animals[] getAnimals() throws IOException {
+	public AnimalsAPIData[] getAnimals() throws IOException {
 
 		String url = "https://jsn9xu2vsk.execute-api.ap-northeast-1.amazonaws.com/sample/sampleapi";
 
@@ -24,28 +23,28 @@ public class AnimalsAPIRepository {
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		Animals[] animalsList = mapper.readValue(json, Animals[].class);
+		AnimalsAPIData[] animalsList = mapper.readValue(json, AnimalsAPIData[].class);
 
 		return animalsList;
 
 	}
-	
-	public Animals[] picAnimals(String pic) throws IOException{
-		
+
+	public AnimalsAPIData[] picAnimals(String pic) throws IOException {
+
 		String url = "https://jsn9xu2vsk.execute-api.ap-northeast-1.amazonaws.com/sample/sampleapi?id=" + pic;
-		
+
 		RestTemplate rest = new RestTemplate();
-		
+
 		ResponseEntity<String> response = rest.getForEntity(url, String.class);
-		
+
 		String json = response.getBody();
-		
+
 		ObjectMapper mapper = new ObjectMapper();
-		
-		Animals[] picList = mapper.readValue(json, Animals[].class);
-		
+
+		AnimalsAPIData[] picList = mapper.readValue(json, AnimalsAPIData[].class);
+
 		return picList;
-		
+
 	}
 
 }

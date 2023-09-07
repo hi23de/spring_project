@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.animalsAPI.AnimalsAPIData.Animals;
-
 @Service
 public class AnimalsAPIService {
 
@@ -17,20 +15,20 @@ public class AnimalsAPIService {
 		this.animalsAPIRepository = animalsAPIRepository;
 	}
 
-	public List<Animals> getAnimals() throws IOException {
+	public List<AnimalsAPIData> getAnimals() throws IOException {
 
-		Animals[] animalsList = animalsAPIRepository.getAnimals();
-		
+		AnimalsAPIData[] animalsList = animalsAPIRepository.getAnimals();
+
 		return Arrays.asList(animalsList);
-	
+
 	}
-	
-	public List<Animals> picAnimals(String pic) throws IOException{
-		
-		Animals[] picList = animalsAPIRepository.picAnimals(pic);
-		
+
+	public List<AnimalsAPIData> picAnimals(String pic) throws IOException {
+
+		AnimalsAPIData[] picList = animalsAPIRepository.picAnimals(pic);
+
 		return Arrays.asList(picList);
-		
+
 	}
 
 }

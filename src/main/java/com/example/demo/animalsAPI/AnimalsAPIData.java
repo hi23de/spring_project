@@ -4,23 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
+@Data
 public class AnimalsAPIData {
 
-	@Data
-	public class Animals {
+	@JsonProperty("id")
+	private int id;
 
-		@JsonProperty("id")
-		private int id;
+	@JsonProperty("name")
+	private String name;
 
-		@JsonProperty("name")
-		private String name;
+	@JsonProperty("japanese_name")
+	private String japaneseName;
 
-		@JsonProperty("japanese_name")
-		private String japaneseName;
-
-		@JsonProperty("cry")
-		private String cry;
-
-	}
+	@JsonProperty("cry")
+	private String cry;
 
 }
